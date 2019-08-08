@@ -11,7 +11,7 @@ console.log('I am ready!');
 });
 
 client.on("guildMemberAdd", member => {
-
+  console.log("Nowy user");
   member.addRole(member.guild.roles.find("name", "zwykłe żółte lunty"));
 });
 
