@@ -12,7 +12,7 @@ console.log('I am ready!');
 
 client.on("guildMemberAdd", function(member)  {
   console.log("Nowy user");
-  member.addRole(member.guild.roles.find("name", "zwykłe żółte lunty"));
+  member.addRole(member.guild.roles.find("name", "Podistoty"));
 });
 
 client.on('message', msg => {
