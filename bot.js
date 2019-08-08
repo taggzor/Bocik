@@ -9,7 +9,7 @@ console.log('I am ready!');
 client.on('message', msg => {
 
 if (msg.content === 'ping') {
-  message.reply('pong');
+  msg.reply('pong');
 }
 
 
