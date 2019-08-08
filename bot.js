@@ -16,11 +16,11 @@ if (!msg.content.startsWith(prefix)) return;
 
 var args = msg.content.substring(prefix.length).split(" ");
 
-switch (args[0]){
+switch (args[0].toLowerCase()){
   case "ping":
       msg.reply('pong');
       break;
-  
+  default: msg.channel.sendMessage("Nani?");
 }
 
 
