@@ -10,6 +10,11 @@ client.on('ready', () => {
 console.log('I am ready!');
 });
 
+client.on("guildMemberAdd", member => {
+
+  member.addRole(member.guild.roles.find("name", "zwykłe żółte lunty"));
+});
+
 client.on('message', msg => {
 
 
