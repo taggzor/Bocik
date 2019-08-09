@@ -108,21 +108,19 @@ switch (args[0].toLowerCase()){
         
         let audio = args.slice(1).join(" ");
         let lnk ='';
-        ytfind( audio, function ( err, r ) {
-          if ( err ) throw err;
-         else{
+        ytfind( audio, vid=>{ 
+          
           const videos = r.videos;
           const playlists = r.playlists;
           const accounts = r.accounts;
          
-          const firstResult = videos[ 0 ]
-          lnk = "https://www.youtube.com"+firstResult.url;
-          console.log( firstResult );}
-        } );
+          const vid = videos[ 0 ]
+          lnk = "https://www.youtube.com"+vid.url;
+          console.log( vid );}
+         );
         
 
         msg.content = ".play "+lnk;
-        console.log("poprawka?: "+msg.content);
       }
       if(!msg.member.voiceChannel){
         msg.channel.sendMessage('Dołącz do jakiegoś kanału');return;
@@ -131,7 +129,8 @@ switch (args[0].toLowerCase()){
         queue: []
       };
       var server = servers[msg.guild.id];
-      server.queue.push(args[1]);
+      if(args[1].includes("https://"))server.queue.push(args[1]);
+      else server.queue.push(lnk);
       if(!msg.guild.voiceConnection) msg.member.voiceChannel.join().then(function(connection){
         play(connection, msg);
       });
