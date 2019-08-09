@@ -74,16 +74,16 @@ switch (args[0].toLowerCase()){
       var server = servers[msg.guild.id];
       if(msg.guild.voiceConnection) msg.guild.voiceConnection.disconnect();
   case "meme":
-      let mem = await msg.channel.sendMessage("Ładuję...");
+      let mem = await msg.channel.sendMessage("Ładuję...")
       let {body} = await superagent
-      .get("https://apis.duncte123.me/meme");
-      if(!{body}) return MessageChannel.channel.sendMessage("Coś popsułem...");
+      .get("https://apis.duncte123.me/meme")
+      if(!{body}) return MessageChannel.channel.sendMessage("Coś popsułem...")
       let memEmbed = new Discord.RichEmbed()
       .setColor(colours.orange)
       .setAuthor("Bot Tagorz", msg.guild.iconURL)
       .setImage(body.file)
-      .setTimestamp();
-      msg.channel.sendMessage({embed: memEmbed});
+      .setTimestamp()
+      msg.channel.sendMessage({embed: memEmbed})
       break;
   default: msg.channel.sendMessage("Nani?");
 }
