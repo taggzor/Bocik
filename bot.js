@@ -77,7 +77,7 @@ switch (args[0].toLowerCase()){
 }
 client.on("message", async msg =>     {
           
-          if(msg.content = ".meme"){let mem = await msg.channel.sendMessage("Ładuję...")
+          if(msg.content === ".meme"){let mem = await msg.channel.sendMessage("Ładuję...")
           let {body} = await superagent
           .get("https://apis.duncte123.me/meme")
           if(!{body}) return MessageChannel.channel.sendMessage("Coś popsułem...")
@@ -88,6 +88,7 @@ client.on("message", async msg =>     {
           .setTimestamp()
           msg.channel.sendMessage({embed: memEmbed})
       mem.delete();}
+      else return;
 });
 
 console.log(msg.content);
