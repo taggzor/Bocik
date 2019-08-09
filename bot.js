@@ -109,16 +109,16 @@ switch (args[0].toLowerCase()){
         let audio = args.slice(1).join(" ");
         let lnk ='';
         ytfind( audio, function ( err, r ) {
-          if ( err ) throw err
-         
-          const videos = r.videos
-          const playlists = r.playlists
-          const accounts = r.accounts
+          if ( err ) throw err;
+         else{
+          const videos = r.videos;
+          const playlists = r.playlists;
+          const accounts = r.accounts;
          
           const firstResult = videos[ 0 ]
           lnk = "https://www.youtube.com"+firstResult.url;
-          console.log( firstResult )
-        } )
+          console.log( firstResult );}
+        } );
         
 
         msg.content = ".play "+lnk;
