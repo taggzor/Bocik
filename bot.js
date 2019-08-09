@@ -116,9 +116,9 @@ switch (args[0].toLowerCase()){
           var firstresult = ytvideo[0];
           console.log(firstresult);
         });
-         let url = "https://www.youtube.com"+firstresult.url;
+         let lnk = "https://www.youtube.com"+firstresult.url;
 
-        msg.content = ".play "+url;
+        msg.content = ".play "+lnk;
       }
       if(!msg.member.voiceChannel){
         msg.channel.sendMessage('Dołącz do jakiegoś kanału');return;
@@ -149,7 +149,7 @@ switch (args[0].toLowerCase()){
         });
          let url = "https://www.youtube.com"+firstresult.url;
 
-        msg.content = ".play"+url;
+        msg.content = ".play "+url;
       }
       if(!msg.member.voiceChannel){
         msg.channel.sendMessage('Dołącz do jakiegoś kanału');return;
