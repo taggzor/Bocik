@@ -113,11 +113,12 @@ switch (args[0].toLowerCase()){
           const ytvideo = r.videos;
           const playlists = r.playlists;
           const accounts = r.accounts;
-          let firstresult = ytvideo[0];
+          var firstresult = ytvideo[0];
+          console.log(firstresult);
         });
          let url = "https://www.youtube.com"+firstresult.url;
 
-        msg.content = ".play"+url;
+        msg.content = ".play "+url;
       }
       if(!msg.member.voiceChannel){
         msg.channel.sendMessage('Dołącz do jakiegoś kanału');return;
