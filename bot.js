@@ -84,6 +84,7 @@ switch (args[0].toLowerCase()){
       .setImage(body.file)
       .setTimestamp()
       msg.channel.sendMessage({embed: memEmbed})
+      mem.delete();
       break;
   default: msg.channel.sendMessage("Nani?");
 }
