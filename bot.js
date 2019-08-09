@@ -76,7 +76,7 @@ switch (args[0].toLowerCase()){
   default: msg.channel.sendMessage("Nani?");
 }
 client.on("message", async msg =>     {
-          if(!msg.content = ".meme") return;
+          if(!msg.content == ".meme") return;
           let mem = await msg.channel.sendMessage("Ładuję...")
           let {body} = await superagent
           .get("https://apis.duncte123.me/meme")
