@@ -4,7 +4,7 @@ const prefix = ".";
 const YTDL = require("ytdl-core");
 const superagent= require("superagent");
 const randomPuppy = require("random-puppy");
-const search = require("yt-search");
+const ytfind = require("yt-search");
 const cheerio = require("cheerio");
 const request = require("request");
 
@@ -104,6 +104,21 @@ switch (args[0].toLowerCase()){
       if(!args[1]){
         msg.channel.sendMessage("Podasz link?");return;
       }
+      if(!args[1].includes("https://")){
+        
+        let audio = args.slice(1).join(" ");
+
+        ytfind( audio , function(err,r){
+          if(err) throw err;
+          const ytvideo = r.videos;
+          const playlists = r.playlists;
+          const accounts = r.accounts;
+          let firstresult = ytvideo[0];
+        });
+         let url = "https://www.youtube.com"+firstresult.url;
+
+        msg.content = ".play"+url;
+      }
       if(!msg.member.voiceChannel){
         msg.channel.sendMessage('Dołącz do jakiegoś kanału');return;
       }
@@ -122,18 +137,18 @@ switch (args[0].toLowerCase()){
       }
       if(!args[1].includes("https://")){
         
-         
-         
+        let audio = args.slice(1).join(" ");
 
+        ytfind( audio , function(err,r){
+          if(err) throw err;
+          const ytvideo = r.videos;
+          const playlists = r.playlists;
+          const accounts = r.accounts;
+          let firstresult = ytvideo[0];
+        });
+         let url = "https://www.youtube.com"+firstresult.url;
 
-
-
-
-
-
-
-      console.log("dziala");  
-      return;
+        msg.content = ".play"+url;
       }
       if(!msg.member.voiceChannel){
         msg.channel.sendMessage('Dołącz do jakiegoś kanału');return;
