@@ -77,26 +77,38 @@ switch (args[0].toLowerCase()){
       break;
   default: msg.channel.sendMessage("Nani?");
 }
-client.on("message", async msg =>     {
-          
-          if(msg.content === ".meme"){
-          let mem = await msg.channel.sendMessage("Ładuję...")
-          let {body} = await superagent
-          .get("https://apis.duncte123.me/meme")
-          if(!{body}) return MessageChannel.channel.sendMessage("Coś popsułem...")
-          let memEmbed = new Discord.RichEmbed()
-          .setColor(colours.orange)
-          .setAuthor("Bot Tagorz", msg.guild.iconURL)
-          .setImage(body.url)
-          .setTimestamp()
-          msg.channel.send({embed: memEmbed})
-      mem.delete();}
-      else return;
-});
 
 console.log(msg.content);
 
 });
-
+client.on("message", async msg =>     {
+  if(msg.content === ".meme"){
+    let reddit = [
+      "meme",
+      "animemes",
+      "MemesOfAnime",
+      "animememes",
+      "AnimeFunny",
+      "dankmemes",
+      "dankmeme",
+      "wholesomememes",
+      "MemeEconomy",
+      "techsupportanimals",
+      "meirl",
+      "me_irl",
+      "2meirl4meirl",
+      "AdviceAnimals"
+  ]
+  let subreddit = reddit[Math.floor(Math.random() * reddit.length)];
+  msg.channel.startTyping();
+  randomPuppy(subreddit).then(async url => {
+    await message.channel.send({
+        files: [{
+            attachment: url,
+            name: 'meme.png'
+        }]
+    }).then(() => message.channel.stopTyping());
+}).catch(err => console.error(err));
+}});
 
 client.login(process.env.BOT_TOKEN);
