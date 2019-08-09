@@ -61,7 +61,7 @@ function image(message, args) {
       }
 
       
-      message.channel.send( urls[0] );
+      message.channel.send( {files: [urls[0]]} );
   });
 
 }
