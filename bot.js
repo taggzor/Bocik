@@ -52,7 +52,7 @@ switch (args[0].toLowerCase()){
   case "lolpick":
       msg.reply(lolchamp[Math.floor(Math.random()* lolchamp.length)]);
       break;
-  case "play" || 'p' :
+  case "play":
       if(!args[1]){
         msg.channel.sendMessage("Podasz link?");return;
       }
@@ -68,6 +68,26 @@ switch (args[0].toLowerCase()){
         play(connection, msg);
       });
       break;
+  case "p":
+      if(!args[1]){
+        msg.channel.sendMessage("Podasz link?");return;
+      }
+      if(!args[1].includes("https://")){
+      console.log("dziala");  
+      return;
+      }
+      if(!msg.member.voiceChannel){
+        msg.channel.sendMessage('Dołącz do jakiegoś kanału');return;
+      }
+      if(!servers[msg.guild.id]) servers[msg.guild.id] = {
+        queue: []
+      };
+      var server = servers[msg.guild.id];
+      server.queue.push(args[1]);
+      if(!msg.guild.voiceConnection) msg.member.voiceChannel.join().then(function(connection){
+        play(connection, msg);
+      });
+    break;
   case "skip":
       var server = servers[msg.guild.id];
       if(server.dispatcher) server.dispatcher.end();
@@ -79,7 +99,7 @@ switch (args[0].toLowerCase()){
       break;
   case "stat":
       var league = new league_api(process.env.LOL_TOKEN);
-      league.getRecentGames('eune', 'FireTaggzor4962', function(data) {
+      league.getRecentGames('eune', 'rIqxcNSwzZfayXBc5JDT73VxnQe3yiiKT7lLyHPQ4pGblzg', function(data) {
         console.log(data);
     });
     break;
