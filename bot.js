@@ -7,12 +7,14 @@ const lolchamp = ['Aatrox', 'Ahri', 'Akali', 'Alistar', 'Amumu', 'Anivia', 'Anni
 
 
 client.on('ready', () => {
-console.log('I am ready!');
+console.log('Gotowy!');
 });
 
 client.on("guildMemberAdd", function(member)  {
-  console.log("Nowy user");
-  member.addRole(member.guild.roles.find("name", "Zwykłe żółte lunty"));
+  console.log("Nowy user na "+member.guild.name);
+
+  if(member.guild.name = "Owcza Zagroda")member.addRole(member.guild.roles.find("name", "Zwykłe żółte lunty"));
+
 });
 
 client.on('message', msg => {
