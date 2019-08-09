@@ -108,17 +108,21 @@ switch (args[0].toLowerCase()){
         
         let audio = args.slice(1).join(" ");
 
-        ytfind( audio , function(err,r){
-          if(err) throw err;
-          const ytvideo = r.videos;
-          const playlists = r.playlists;
-          const accounts = r.accounts;
-          var firstresult = ytvideo[0];
-          console.log(firstresult);
-        });
+        ytfind( audio, function ( err, r ) {
+          if ( err ) throw err
+         
+          const videos = r.videos
+          const playlists = r.playlists
+          const accounts = r.accounts
+         
+          const firstResult = videos[ 0 ]
+         
+          console.log( firstResult )
+        } )
          let lnk = "https://www.youtube.com"+firstresult.url;
 
         msg.content = ".play "+lnk;
+        console.log("poprawka?: "+msg.content);
       }
       if(!msg.member.voiceChannel){
         msg.channel.sendMessage('Dołącz do jakiegoś kanału');return;
