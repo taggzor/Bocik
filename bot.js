@@ -25,7 +25,7 @@ var servers = {};
 
 
 client.on('ready', () => {
-console.log('Gotowy na ${client.guilds.size} serverach!');
+console.log('Gotowy na '+client.guilds.size+' serverach!');
 });
 
 client.on("guildMemberAdd", function(member)  {
@@ -89,7 +89,7 @@ client.on("message", async msg =>     {
           .setAuthor("Bot Tagorz", msg.guild.iconURL)
           .setImage(body.url)
           .setTimestamp()
-          msg.channel.sendMessage({embed: memEmbed})
+          msg.channel.send({embed: memEmbed})
       mem.delete();}
       else return;
 });
