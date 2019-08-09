@@ -110,13 +110,13 @@ switch (args[0].toLowerCase()){
         let lnk ='';
         ytfind( audio, vid=>{ 
           
-          const videos = r.videos;
-          const playlists = r.playlists;
-          const accounts = r.accounts;
+          const videos = vid.videos;
+          const playlists = vid.playlists;
+          const accounts = vid.accounts;
          
-          const vid = videos[ 0 ]
-          lnk = "https://www.youtube.com"+vid.url;
-          console.log( vid );}
+          const fff = videos[ 0 ]
+          lnk = "https://www.youtube.com"+fff.url;
+          console.log( fff );}
          );
         
 
