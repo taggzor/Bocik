@@ -25,7 +25,7 @@ var servers = {};
 
 
 client.on('ready', () => {
-console.log('Gotowy!');
+console.log('Gotowy na ${client.guilds.size} serverach!');
 });
 
 client.on("guildMemberAdd", function(member)  {
