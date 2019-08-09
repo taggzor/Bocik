@@ -96,15 +96,6 @@ switch (args[0].toLowerCase()){
       if(msg.guild.voiceConnection) msg.guild.voiceConnection.disconnect();
   case "meme":
       break;
-<<<<<<< HEAD
-  case "stat":
-      var league = new league_api(process.env.LOL_TOKEN);
-      league.getRecentGames('eune', 'rIqxcNSwzZfayXBc5JDT73VxnQe3yiiKT7lLyHPQ4pGblzg', function(data) {
-        console.log(data);
-    });
-    break;
-=======
->>>>>>> parent of b9a1ee1... league
   default: msg.channel.sendMessage("Nani?");
 }
 
