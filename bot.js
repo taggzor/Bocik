@@ -4,6 +4,9 @@ const prefix = ".";
 const YTDL = require("ytdl-core");
 const superagent= require("superagent");
 const randomPuppy = require("random-puppy");
+const search = require("yt-search");
+const cheerio = require("cheerio");
+const request = require("request");
 
 const lolchamp = ['Aatrox', 'Ahri', 'Akali', 'Alistar', 'Amumu', 'Anivia', 'Annie', 'Ashe', 'Aurelion Sol', 'Azir', 'Bard', 'Blitzcrank', 'Brand', 'Braum', 'Caitlyn', 'Camille', 'Cassiopeia', 'Cho\'Gath', 'Corki', 'Darius', 'Diana', 'Dr Mundo', 'Draven', 'Ekko', 'Elise', 'Evelynn', 'Ezreal', 'Fiddlesticks', 'Fiora', 'Fizz', 'Galio', 'Gankplank', 'Garen', 'Gnar', 'Gragas', 'Graves', 'Hecarim', 'Heimerdinger', 'Illaoi', 'Irelia', 'Ivern', 'Janna', 'Jarvan IV', 'Jax', 'Jayce', 'Jhin', 'Jinx', 'Kai\'Sa', 'Kalista', 'Karma', 'Karthus', 'Kassadin', 'Katarina', 'Kayle', 'Kayn', 'Kennen', 'Kha\'Zix', 'Kindred', 'Kled', 'Kog\'Maw', 'LeBlanc', 'Lee Sin', 'Leona', 'Lissandra', 'Lucian', 'Lulu', 'Lux', 'Malphite', 'Malzahar', 'Maokai', 'Master Yi', 'Miss Fortune', 'Mordekaiser', 'Morgana', 'Nami', 'Nasus', 'Nautilus', 'Neeko', 'Nidalee', 'Nocturne', 'Nunu i Willump', 'Olaf', 'Orianna', 'Ornn', 'Pantheon', 'Poppy', 'Pyke', 'Qiyana', 'Quinn', 'Rakan', 'Rammus', 'Rek\'Sai', 'Renekton', 'Rengar', 'Riven', 'Rumble', 'Ryze', 'Sejuani', 'Shaco', 'Shen', 'Shyvana', 'Singed', 'Sion', 'Sivir', 'Skarner', 'Sona', 'Soraka', 'Swain', 'Sylas', 'Syndra', 'Tahm Kench', 'Taliyah', 'Talon', 'Taric', 'Teemo', 'Thresh', 'Tristana', 'Trundle', 'Tryndamere', 'Twisted Fate', 'Twitch', 'Udyr', 'Urgot', 'Varus', 'Vayne', 'Veigar', 'Vel\'Koz', 'Vi', 'Viktor', 'Vladimir', 'Volibear', 'Warwick', 'Wukong', 'Xayah', 'Xerath', 'Xin Zhao', 'Yasuo', 'Yorick', 'Yummi', 'Zac', 'Zed', 'Ziggs', 'Zilean', 'Zoe', 'Zyra'];
 
@@ -21,6 +24,53 @@ function play(connection,msg){
 }
 
 var servers = {};
+
+
+function image(message, args) {
+ 
+  
+
+  var search = args.slice(1).join(" ");
+
+  var options = {
+      url: "http://results.dogpile.com/serp?qc=images&q=" + search,
+      method: "GET",
+      headers: {
+          "Accept": "text/html",
+          "User-Agent": "Chrome"
+      }
+  };
+  request(options, function(error, response, responseBody) {
+      if (error) {
+          
+          return;
+      }
+
+     
+
+      $ = cheerio.load(responseBody); 
+
+     
+      var links = $(".image a.link");
+
+      // We want to fetch the URLs not the DOM nodes, we do this with jQuery's .attr() function
+      // this line might be hard to understand but it goes thru all the links (DOM) and stores each url in an array called urls
+      var urls = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("href"));
+      console.log(urls);
+      if (!urls.length) {
+          return;
+      }
+
+      
+      message.channel.send( urls[0] );
+  });
+
+}
+
+
+
+
+
 
 
 
@@ -72,6 +122,17 @@ switch (args[0].toLowerCase()){
         msg.channel.sendMessage("Podasz link?");return;
       }
       if(!args[1].includes("https://")){
+        
+         
+         
+
+
+
+
+
+
+
+
       console.log("dziala");  
       return;
       }
@@ -96,6 +157,9 @@ switch (args[0].toLowerCase()){
       if(msg.guild.voiceConnection) msg.guild.voiceConnection.disconnect();
   case "meme":
       break;
+  case "img":
+    image(msg, args);
+    break;
   default: msg.channel.sendMessage("Nani?");
 }
 
