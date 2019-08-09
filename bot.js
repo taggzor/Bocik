@@ -53,10 +53,9 @@ function image(message, args) {
      
       var links = $(".image a.link");
 
-      // We want to fetch the URLs not the DOM nodes, we do this with jQuery's .attr() function
-      // this line might be hard to understand but it goes thru all the links (DOM) and stores each url in an array called urls
+
       var urls = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("href"));
-      console.log(urls);
+      
       if (!urls.length) {
           return;
       }
