@@ -75,12 +75,11 @@ switch (args[0].toLowerCase()){
   case "stop":
       var server = servers[msg.guild.id];
       if(msg.guild.voiceConnection) msg.guild.voiceConnection.disconnect();
-      msg.channel.send(process.env.LOL_TOKEN);
   case "meme":
       break;
   case "stat":
       var league = new league_api(process.env.LOL_TOKEN);
-      league.getRecentGames('eune', '5908', function(data) {
+      league.getRecentGames('eune', 'FireTaggzor4962', function(data) {
         console.log(data);
     });
     break;
