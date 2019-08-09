@@ -35,7 +35,7 @@ client.on("guildMemberAdd", function(member)  {
 
 });
 
-client.on('message', msg => {
+client.on('message', async msg => {
 
 
 
