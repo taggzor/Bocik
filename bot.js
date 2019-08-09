@@ -107,7 +107,7 @@ switch (args[0].toLowerCase()){
       if(!args[1].includes("https://")){
         
         let audio = args.slice(1).join(" ");
-
+        let lnk ='';
         ytfind( audio, function ( err, r ) {
           if ( err ) throw err
          
@@ -116,10 +116,10 @@ switch (args[0].toLowerCase()){
           const accounts = r.accounts
          
           const firstResult = videos[ 0 ]
-         
+          lnk = "https://www.youtube.com"+firstResult.url;
           console.log( firstResult )
         } )
-         let lnk = "https://www.youtube.com"+firstresult.url;
+        
 
         msg.content = ".play "+lnk;
         console.log("poprawka?: "+msg.content);
