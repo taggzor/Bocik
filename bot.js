@@ -83,15 +83,13 @@ client.on("message", async msg =>     {
           let mem = await msg.channel.sendMessage("Ładuję...")
           let {body} = await superagent
           .get("https://apis.duncte123.me/meme")
-          console.log(body.file)
-          
-          //if(!{body}) return MessageChannel.channel.sendMessage("Coś popsułem...")
-          //let memEmbed = new Discord.RichEmbed()
-          //.setColor(colours.orange)
-          //.setAuthor("Bot Tagorz", msg.guild.iconURL)
-          //.setImage(body.file)
-          //.setTimestamp()
-          //msg.channel.sendMessage({embed: memEmbed})
+          if(!{body}) return MessageChannel.channel.sendMessage("Coś popsułem...")
+          let memEmbed = new Discord.RichEmbed()
+          .setColor(colours.orange)
+          .setAuthor("Bot Tagorz", msg.guild.iconURL)
+          .setImage(body.url)
+          .setTimestamp()
+          msg.channel.sendMessage({embed: memEmbed})
       mem.delete();}
       else return;
 });
