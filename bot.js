@@ -35,7 +35,7 @@ client.on("guildMemberAdd", function(member)  {
 
 });
 
-client.on('message', async msg => {
+client.on('message', msg => {
 
 
 
@@ -73,22 +73,21 @@ switch (args[0].toLowerCase()){
   case "stop":
       var server = servers[msg.guild.id];
       if(msg.guild.voiceConnection) msg.guild.voiceConnection.disconnect();
-  case "meme":
-      let mem = await msg.channel.sendMessage("Ładuję...")
-      let {body} = await superagent
-      .get("https://apis.duncte123.me/meme")
-      if(!{body}) return MessageChannel.channel.sendMessage("Coś popsułem...")
-      let memEmbed = new Discord.RichEmbed()
-      .setColor(colours.orange)
-      .setAuthor("Bot Tagorz", msg.guild.iconURL)
-      .setImage(body.file)
-      .setTimestamp()
-      msg.channel.sendMessage({embed: memEmbed})
-      mem.delete();
-      break;
   default: msg.channel.sendMessage("Nani?");
 }
-
+client.on("message", async msg =>     {
+          let mem = await msg.channel.sendMessage("Ładuję...")
+          let {body} = await superagent
+          .get("https://apis.duncte123.me/meme")
+          if(!{body}) return MessageChannel.channel.sendMessage("Coś popsułem...")
+          let memEmbed = new Discord.RichEmbed()
+          .setColor(colours.orange)
+          .setAuthor("Bot Tagorz", msg.guild.iconURL)
+          .setImage(body.file)
+          .setTimestamp()
+          msg.channel.sendMessage({embed: memEmbed})
+      mem.delete();
+});
 
 console.log(msg.content);
 
