@@ -77,7 +77,7 @@ function szukaj(nazwa)
     const accounts = r.accounts
  
     const firstResult = videos[ 0 ].url
-    console.log(" czy to wyslal?  https://www.youtube.com"+firstResult)
+    
     s = "https://www.youtube.com"+firstResult;
 
   
