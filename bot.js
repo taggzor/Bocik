@@ -69,7 +69,7 @@ function image(message, args) {
 function szukaj(nazwa)
   {
     let s ='';
-    ytSearch( nazwa, function ( err, r, s ) {
+    ytSearch( nazwa, function ( err, r, ) {
     if ( err ) throw err
  
     const videos = r.videos
@@ -78,11 +78,20 @@ function szukaj(nazwa)
  
     const firstResult = videos[ 0 ].url
     
-    s = "https://www.youtube.com"+firstResult;
+    var s = "https://www.youtube.com"+firstResult
+    if(!servers[msg.guild.id]) servers[msg.guild.id] = {
+      queue: []
+    };
+    var server = servers[msg.guild.id];
+    server.queue.push(s);
+    
+    if(!msg.guild.voiceConnection) msg.member.voiceChannel.join().then(function(connection){
+      play(connection, msg);
+    });
 
   
     } );
-  console.log(s);
+  
   return ;
 }
 
@@ -119,6 +128,9 @@ switch (args[0].toLowerCase()){
       msg.reply(lolchamp[Math.floor(Math.random()* lolchamp.length)]);
       break;
   case "play":
+    if(!msg.member.voiceChannel){
+        msg.channel.sendMessage('Dołącz do jakiegoś kanału');return;
+      }
       if(!args[1]){
         msg.channel.sendMessage("Podasz link?");return;
       }
@@ -127,9 +139,6 @@ switch (args[0].toLowerCase()){
         
         szukaj(search);
         return console.log("Koniec");
-      }
-      if(!msg.member.voiceChannel){
-        msg.channel.sendMessage('Dołącz do jakiegoś kanału');return;
       }
       if(!servers[msg.guild.id]) servers[msg.guild.id] = {
         queue: []
