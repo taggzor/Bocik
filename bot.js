@@ -76,9 +76,9 @@ function szukaj(nazwa,server,link)
     const playlists = r.playlists
     const accounts = r.accounts
  
-    const firstResult = videos[0].url
+    const firstResult = videos[0]
     link="https://www.youtube.com"+firstResult
-    server.queue.push(link)
+    console.log(link);
     
   
     } );
