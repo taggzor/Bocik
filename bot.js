@@ -118,7 +118,7 @@ switch (args[0].toLowerCase()){
       if(!args[1].includes("https://")){
         var search = args.slice(1).join(" ");
         console.log(szukaj(search));
-
+        return;
         
       }
       if(!msg.member.voiceChannel){
