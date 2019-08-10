@@ -77,7 +77,7 @@ function szukaj(nazwa)
  
     const firstResult = videos[ 0 ].url
     console.log(firstResult)
-    nazwa = firstResult
+    return firstResult
 
   
     } );
