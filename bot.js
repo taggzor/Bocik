@@ -67,7 +67,8 @@ function image(message, args) {
 }
 
 function szukaj(nazwa)
-  {ytSearch( nazwa, function ( err, r ) {
+  {
+    ytSearch( nazwa, function ( err, r ) {
     if ( err ) throw err
  
     const videos = r.videos
@@ -76,10 +77,12 @@ function szukaj(nazwa)
  
     const firstResult = videos[ 0 ]
     console.log(firstResult)
+    nazwa = firstResult.url
+
   
     } );
-  console.log(firstResult.url);
-  return firstResult.url;
+  console.log(nazwa);
+  return;
 }
 
 
