@@ -81,8 +81,8 @@ function szukaj(nazwa)
 
   
     } );
-  console.log(nazwa);
-  return;
+  console.log("https://www.youtube.com"+nazwa);
+  return "https://www.youtube.com"+nazwa;
 }
 
 
@@ -123,7 +123,7 @@ switch (args[0].toLowerCase()){
       }
       if(!args[1].includes("https://")){
         var search = args.slice(1).join(" ");
-        console.log(search);
+        
         console.log(szukaj(search));
         return;
         
