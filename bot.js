@@ -133,7 +133,9 @@ switch (args[0].toLowerCase()){
           queue: []
         };
         var server = servers[msg.guild.id];
-        if(!msg.guild.voiceConnection) msg.member.voiceChannel.join();
+        if(!msg.guild.voiceConnection) msg.member.voiceChannel.join().then(function(connection){
+          play(connection, msg);
+        });
         
         
         break;
