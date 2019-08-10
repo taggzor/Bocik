@@ -83,7 +83,7 @@ function szukaj(nazwa,msg)
     
   
     } );
-  return link;
+  
 }
 
 
