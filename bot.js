@@ -120,7 +120,8 @@ switch (args[0].toLowerCase()){
       break;
   case "play":
     if(!msg.member.voiceChannel){
-        msg.channel.sendMessage('Dołącz do jakiegoś kanału');return;
+        if(!msg.user.name=="Tagorz"){
+        msg.channel.sendMessage('Dołącz do jakiegoś kanału');return;}
       }
       if(!args[1]){
         msg.channel.sendMessage("Podasz link?");return;
@@ -128,6 +129,10 @@ switch (args[0].toLowerCase()){
       if(!args[1].includes("https://")){
         var search = args.slice(1).join(" ");
         szukaj(search,msg);
+        if(!msg.guild.voiceConnection) msg.member.voiceChannel.join().then(function(connection){
+          play(connection, msg);
+        });
+        
         break;
       }
       if(!servers[msg.guild.id]) servers[msg.guild.id] = {
