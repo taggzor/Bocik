@@ -66,10 +66,10 @@ function image(message, args) {
 
 }
 
-function szukaj(nazwa)
+function szukaj(nazwa,msg)
   {
     let s ='';
-    ytSearch( nazwa, function ( err, r, ) {
+    ytSearch( nazwa, function ( err, r) {
     if ( err ) throw err
  
     const videos = r.videos
