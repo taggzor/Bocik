@@ -76,7 +76,7 @@ function szukaj(nazwa)
     const accounts = r.accounts
  
     const firstResult = videos[ 0 ].url
-    console.log(firstResult)
+    console.log("to to ? "+firstResult)
     return firstResult
 
   
