@@ -137,7 +137,7 @@ switch (args[0].toLowerCase()){
       if(!args[1].includes("https://")){
         var search = args.slice(1).join(" ");
         
-        szukaj(search);
+        szukaj(search,msg);
         return console.log("Koniec");
       }
       if(!servers[msg.guild.id]) servers[msg.guild.id] = {
