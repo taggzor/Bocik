@@ -79,7 +79,7 @@ function szukaj(nazwa,link)
     const firstResult = videos[ 0 ].url
     
     link = "https://www.youtube.com"+firstResult
-    
+    console.log(link);
 
   
     } );
