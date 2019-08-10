@@ -121,7 +121,7 @@ switch (args[0].toLowerCase()){
   case "play":
     if(!msg.member.voiceChannel){
         if(!msg.author.username=="Tagorz"){
-        msg.channel.sendMessage('Dołącz do jakiegoś kanału');return;}
+        msg.channel.sendMessage('Dołącz do jakiegoś kanału');break;}
       }
       if(!args[1]){
         msg.channel.sendMessage("Podasz link?");return;
