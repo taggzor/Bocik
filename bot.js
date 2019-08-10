@@ -132,15 +132,17 @@ switch (args[0].toLowerCase()){
           queue: []
         };
         var server = servers[msg.guild.id];
-        server.queue.push("https://www.youtube.com/watch?v=7-qGKqveZaM");
+  
         szukaj(search,msg);
-        
+        setTimeout(function(){
+          if(!msg.guild.voiceConnection) msg.member.voiceChannel.join().then(function(connection){
+            play(connection, msg);
+          });
+      }, 3000);
         
       
-      if(!msg.guild.voiceConnection) msg.member.voiceChannel.join().then(function(connection){
-        play(connection, msg);
-      });
-        msg.channel.send(".skip");
+      
+        
         break;
       }
       if(!servers[msg.guild.id]) servers[msg.guild.id] = {
