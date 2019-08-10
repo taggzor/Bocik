@@ -133,10 +133,10 @@ switch (args[0].toLowerCase()){
           queue: []
         };
         var server = servers[msg.guild.id];
-        if(!msg.guild.voiceConnection) msg.member.voiceChannel.join().then(function(connection){
-          play(connection, msg);
-        });
-        
+        if(!msg.guild.voiceConnection) msg.member.voiceChannel.join();
+
+        var connection =msg.member.voiceChannel;
+        play(connection, msg);
         
         break;
       }
@@ -145,7 +145,7 @@ switch (args[0].toLowerCase()){
       };
       var server = servers[msg.guild.id];
       if(args[1].includes("https://"))server.queue.push(args[1]);
-      if(!args[1].includes("https://"))msg.channel.send("Szukam...");
+      if(!(args[1].includes("https://")))msg.channel.send("Szukam...");
       if(!msg.guild.voiceConnection) msg.member.voiceChannel.join().then(function(connection){
         play(connection, msg);
       });
