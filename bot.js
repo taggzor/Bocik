@@ -79,7 +79,7 @@ function szukaj(nazwa,msg)
     const firstResult = videos[0].url
     
     var link = "https://www.youtube.com"+firstResult
-    return msg.channel.send(prefix+"play "+link)
+    return msg.channel.send(prefix+"play "+link.toString())
     
   
     } );
