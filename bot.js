@@ -124,7 +124,7 @@ switch (args[0].toLowerCase()){
         msg.channel.sendMessage('Dołącz do jakiegoś kanału');break;}
       }
       if(!args[1]){
-        msg.channel.sendMessage("Podasz link?");return;
+        msg.channel.sendMessage("Podasz link?");break;
       }
       if(!args[1].includes("https://")){
         var search = args.slice(1).join(" ");
@@ -132,20 +132,15 @@ switch (args[0].toLowerCase()){
           queue: []
         };
         var server = servers[msg.guild.id];
-  
+        server.queue.push("https://www.youtube.com/watch?v=7-qGKqveZaM");
         szukaj(search,msg);
-        if(!msg.guild.voiceConnection) msg.member.voiceChannel.join();
-        setTimeout(function(){
-          if(!msg.guild.voiceConnection) msg.member.voiceChannel.join().then(function(connection){
-            play(connection, msg);
-          });
-      }, 3000).then(function(connection){
+        
+        
+      
+      if(!msg.guild.voiceConnection) msg.member.voiceChannel.join().then(function(connection){
         play(connection, msg);
       });
-        
-      
-      
-        
+        msg.channel.send(".skip");
         break;
       }
       if(!servers[msg.guild.id]) servers[msg.guild.id] = {
