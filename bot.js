@@ -75,9 +75,9 @@ function szukaj(nazwa)
     const playlists = r.playlists
     const accounts = r.accounts
  
-    const firstResult = videos[ 0 ]
+    const firstResult = videos[ 0 ].url
     console.log(firstResult)
-    nazwa = firstResult.url
+    nazwa = firstResult
 
   
     } );
