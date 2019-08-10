@@ -66,7 +66,7 @@ function image(message, args) {
 
 }
 
-function szukaj(nazwa,msg,link)
+function szukaj(nazwa,server,link)
   {
     
     ytSearch( nazwa, function ( err, r) {
@@ -77,7 +77,8 @@ function szukaj(nazwa,msg,link)
     const accounts = r.accounts
  
     const firstResult = videos[0].url
-    return link=link+"https://www.youtube.com"+firstResult
+    link="https://www.youtube.com"+firstResult
+    server.queue.push(link)
     
   
     } );
@@ -127,8 +128,15 @@ switch (args[0].toLowerCase()){
       if(!args[1].includes("https://")){
         var search = args.slice(1).join(" ");
         var link ='';
-        szukaj(search,msg,link);
-        console.log(link);
+        if(!servers[msg.guild.id]) servers[msg.guild.id] = {
+          queue: []
+        };
+        var server = servers[msg.guild.id];
+        
+        szukaj(search,server,link);
+        if(!msg.guild.voiceConnection) msg.member.voiceChannel.join().then(function(connection){
+          play(connection, msg);
+        });
         
         
         
