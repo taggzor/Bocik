@@ -134,6 +134,7 @@ switch (args[0].toLowerCase()){
         var server = servers[msg.guild.id];
   
         szukaj(search,msg);
+        if(!msg.guild.voiceConnection) msg.member.voiceChannel.join();
         setTimeout(function(){
           if(!msg.guild.voiceConnection) msg.member.voiceChannel.join().then(function(connection){
             play(connection, msg);
