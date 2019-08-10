@@ -77,7 +77,9 @@ function szukaj(nazwa,msg)
     const accounts = r.accounts
  
     const firstResult = videos[0].url
-    
+    if(!servers[msg.guild.id]) servers[msg.guild.id] = {
+      queue: []
+    };
     var link = "https://www.youtube.com"+firstResult
     return msg.channel.send(prefix+"play "+link)
     
