@@ -116,21 +116,7 @@ switch (args[0].toLowerCase()){
       }
       if(!args[1].includes("https://")){
         
-        let audio = args.slice(1).join(" ");
-        let lnk ='';
-        ytfind( audio, vid=>{ 
-          
-          const videos = vid.videos;
-          const playlists = vid.playlists;
-          const accounts = vid.accounts;
-         
-          const fff = videos[ 0 ]
-          lnk = "https://www.youtube.com"+fff.url;
-          console.log( fff );}
-         );
         
-
-        msg.content = ".play "+lnk;
       }
       if(!msg.member.voiceChannel){
         msg.channel.sendMessage('Dołącz do jakiegoś kanału');return;
@@ -151,18 +137,7 @@ switch (args[0].toLowerCase()){
       }
       if(!args[1].includes("https://")){
         
-        let audio = args.slice(1).join(" ");
-
-        ytfind( audio , function(err,r){
-          if(err) throw err;
-          const ytvideo = r.videos;
-          const playlists = r.playlists;
-          const accounts = r.accounts;
-          let firstresult = ytvideo[0];
-        });
-         let url = "https://www.youtube.com"+firstresult.url;
-
-        msg.content = ".play "+url;
+        
       }
       if(!msg.member.voiceChannel){
         msg.channel.sendMessage('Dołącz do jakiegoś kanału');return;
