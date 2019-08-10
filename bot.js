@@ -119,7 +119,7 @@ switch (args[0].toLowerCase()){
       msg.reply(lolchamp[Math.floor(Math.random()* lolchamp.length)]);
       break;
   case "play":
-    if((!msg.member.voiceChannelID)&&(!msg.author.username==="Tagorz")){
+    if((!msg.member.guild.voiceChannelID)&&(!msg.author.username==="Tagorz")){
        
         msg.channel.send('Dołącz do jakiegoś kanału');break;
       }
