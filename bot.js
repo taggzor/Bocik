@@ -139,7 +139,8 @@ switch (args[0].toLowerCase()){
           if(!msg.guild.voiceConnection) msg.member.voiceChannel.join().then(function(connection){
             play(connection, msg);
           });
-      }, 3000);
+      }, 3000).then(function(connection){
+        play(connection, msg);
         
       
       
