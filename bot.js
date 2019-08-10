@@ -93,7 +93,7 @@ client.on("guildMemberAdd", function(member)  {
   console.log("Nowy user na "+member.guild.name);
 
   if(member.guild.name = "Owcza Zagroda")member.addRole(member.guild.roles.find("name", "Zwykłe żółte lunty"));
-
+  if(member.guild.name = "#Hentai_Zone")member.addRole(member.guild.roles.find("name", "dupsko"));
 });
 
 client.on('message', msg => {
@@ -117,6 +117,7 @@ switch (args[0].toLowerCase()){
       }
       if(!args[1].includes("https://")){
         var search = args.slice(1).join(" ");
+        console.log(search);
         console.log(szukaj(search));
         return;
         
