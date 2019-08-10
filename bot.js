@@ -69,7 +69,7 @@ function image(message, args) {
 function szukaj(nazwa)
   {
     let s ='';
-    ytSearch( nazwa,s, function ( err, r ) {
+    ytSearch( nazwa, function ( err, r, s ) {
     if ( err ) throw err
  
     const videos = r.videos
