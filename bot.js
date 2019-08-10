@@ -76,7 +76,7 @@ function szukaj(nazwa,msg)
     const playlists = r.playlists
     const accounts = r.accounts
  
-    const firstResult = videos[ 0 ].url
+    const firstResult = videos[0].url
     
     var link = "https://www.youtube.com"+firstResult
     return msg.channel.send(prefix+"play "+link)
@@ -133,9 +133,7 @@ switch (args[0].toLowerCase()){
           queue: []
         };
         var server = servers[msg.guild.id];
-        if(!msg.guild.voiceConnection) msg.member.voiceChannel.join().then(function(connection){
-          play(connection, msg);
-        });
+        if(!msg.guild.voiceConnection) msg.member.voiceChannel.join();
         
         
         break;
