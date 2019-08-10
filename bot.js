@@ -129,6 +129,10 @@ switch (args[0].toLowerCase()){
       if(!args[1].includes("https://")){
         var search = args.slice(1).join(" ");
         szukaj(search,msg);
+        if(!servers[msg.guild.id]) servers[msg.guild.id] = {
+          queue: []
+        };
+        var server = servers[msg.guild.id];
         if(!msg.guild.voiceConnection) msg.member.voiceChannel.join();
         
         
