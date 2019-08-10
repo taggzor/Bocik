@@ -141,6 +141,7 @@ switch (args[0].toLowerCase()){
           });
       }, 3000).then(function(connection){
         play(connection, msg);
+      });
         
       
       
