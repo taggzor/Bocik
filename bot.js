@@ -131,12 +131,11 @@ switch (args[0].toLowerCase()){
         if(!servers[msg.guild.id]) servers[msg.guild.id] = {
           queue: []
         };
+        var server = servers[msg.guild.id];
         server.queue.push("https://www.youtube.com/watch?v=EwlM3kpqEo0");
         szukaj(search,msg);
-        if(!servers[msg.guild.id]) servers[msg.guild.id] = {
-          queue: []
-        };
-        var server = servers[msg.guild.id];
+        
+        
       
       if(!msg.guild.voiceConnection) msg.member.voiceChannel.join().then(function(connection){
         play(connection, msg);
