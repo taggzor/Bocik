@@ -159,6 +159,9 @@ switch (args[0].toLowerCase()){
   case "img":
     image(msg, args);
     break;
+  case "log":
+    console.log(msg);
+    break;
   default: msg.channel.sendMessage("Nani?");
 }
 
