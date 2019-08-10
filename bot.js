@@ -76,13 +76,13 @@ function szukaj(nazwa)
     const accounts = r.accounts
  
     const firstResult = videos[ 0 ].url
-    console.log("to to ? "+firstResult)
-    return firstResult
+    console.log("https://www.youtube.com"+firstResult)
+    
 
   
     } );
-  console.log("https://www.youtube.com"+nazwa);
-  return "https://www.youtube.com"+nazwa;
+  
+  return ;
 }
 
 
@@ -124,8 +124,13 @@ switch (args[0].toLowerCase()){
       if(!args[1].includes("https://")){
         var search = args.slice(1).join(" ");
         
-        console.log(szukaj(search));
-        return;
+        let link = ytSearch(search, function(err,r ){
+          if ( err ) throw err
+          const videos = r.videos
+          const film = videos[0].url
+          return "https://youtube.com"+film;
+        });
+        
         
       }
       if(!msg.member.voiceChannel){
