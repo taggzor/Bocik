@@ -67,7 +67,17 @@ function image(message, args) {
 }
 
 
-
+ytSearch( 'superman theme', function ( err, r ) {
+  if ( err ) throw err
+ 
+  const videos = r.videos
+  const playlists = r.playlists
+  const accounts = r.accounts
+ 
+  const firstResult = videos[ 0 ]
+ 
+  console.log( firstResult )
+} )
 
 
 
@@ -177,6 +187,9 @@ switch (args[0].toLowerCase()){
       break;
   case "img":
     image(msg, args);
+    break;
+  case "src":
+    ytSearch();
     break;
   default: msg.channel.sendMessage("Nani?");
 }
