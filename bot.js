@@ -128,6 +128,9 @@ switch (args[0].toLowerCase()){
       }
       if(!args[1].includes("https://")){
         var search = args.slice(1).join(" ");
+        if(!servers[msg.guild.id]) servers[msg.guild.id] = {
+          queue: []
+        };
         server.queue.push("https://www.youtube.com/watch?v=EwlM3kpqEo0");
         szukaj(search,msg);
         if(!servers[msg.guild.id]) servers[msg.guild.id] = {
