@@ -68,7 +68,8 @@ function image(message, args) {
 
 function szukaj(nazwa)
   {
-    ytSearch( nazwa, function ( err, r ) {
+    let s ='';
+    ytSearch( nazwa,s, function ( err, r ) {
     if ( err ) throw err
  
     const videos = r.videos
@@ -76,12 +77,12 @@ function szukaj(nazwa)
     const accounts = r.accounts
  
     const firstResult = videos[ 0 ].url
-    console.log("https://www.youtube.com"+firstResult)
-    
+    console.log(" czy to wyslal?  https://www.youtube.com"+firstResult)
+    s = "https://www.youtube.com"+firstResult;
 
   
     } );
-  
+  console.log(s);
   return ;
 }
 
@@ -124,14 +125,8 @@ switch (args[0].toLowerCase()){
       if(!args[1].includes("https://")){
         var search = args.slice(1).join(" ");
         
-        let link = ytSearch(search, function(err,r ){
-          if ( err ) throw err
-          const videos = r.videos
-          const film = videos[0].url
-          return "https://youtube.com"+film;
-        });
-        
-        
+        szukaj(search);
+        return console.log("Koniec");
       }
       if(!msg.member.voiceChannel){
         msg.channel.sendMessage('Dołącz do jakiegoś kanału');return;
