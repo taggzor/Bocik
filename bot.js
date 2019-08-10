@@ -67,17 +67,20 @@ function image(message, args) {
 }
 
 function szukaj(nazwa)
-{ytSearch( nazwa, function ( err, r ) {
-  if ( err ) throw err
+  {ytSearch( nazwa, function ( err, r ) {
+    if ( err ) throw err
  
-  const videos = r.videos
-  const playlists = r.playlists
-  const accounts = r.accounts
+    const videos = r.videos
+    const playlists = r.playlists
+    const accounts = r.accounts
  
-  const firstResult = videos[ 0 ]
- 
+    const firstResult = videos[ 0 ]
+    console.log(firstResult)
+  
+    } );
+  console.log(firstResult.url);
   return firstResult.url;
-} );}
+}
 
 
 
