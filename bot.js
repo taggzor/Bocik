@@ -66,7 +66,8 @@ function image(message, args) {
 
 }
 
-ytSearch( 'superman theme', function ( err, r ) {
+function szukaj(nazwa)
+{ytSearch( nazwa, function ( err, r ) {
   if ( err ) throw err
  
   const videos = r.videos
@@ -75,8 +76,8 @@ ytSearch( 'superman theme', function ( err, r ) {
  
   const firstResult = videos[ 0 ]
  
-  console.log( firstResult )
-} )
+  return firstResult.url;
+} );}
 
 
 
@@ -115,7 +116,9 @@ switch (args[0].toLowerCase()){
         msg.channel.sendMessage("Podasz link?");return;
       }
       if(!args[1].includes("https://")){
-        
+        var search = args.slice(1).join(" ");
+        console.log(szukaj(search));
+
         
       }
       if(!msg.member.voiceChannel){
@@ -126,30 +129,13 @@ switch (args[0].toLowerCase()){
       };
       var server = servers[msg.guild.id];
       if(args[1].includes("https://"))server.queue.push(args[1]);
-      else server.queue.push(lnk);
+      
       if(!msg.guild.voiceConnection) msg.member.voiceChannel.join().then(function(connection){
         play(connection, msg);
       });
       break;
   case "p":
-      if(!args[1]){
-        msg.channel.sendMessage("Podasz link?");return;
-      }
-      if(!args[1].includes("https://")){
-        
-        
-      }
-      if(!msg.member.voiceChannel){
-        msg.channel.sendMessage('Dołącz do jakiegoś kanału');return;
-      }
-      if(!servers[msg.guild.id]) servers[msg.guild.id] = {
-        queue: []
-      };
-      var server = servers[msg.guild.id];
-      server.queue.push(args[1]);
-      if(!msg.guild.voiceConnection) msg.member.voiceChannel.join().then(function(connection){
-        play(connection, msg);
-      });
+      
     break;
   case "skip":
       var server = servers[msg.guild.id];
@@ -162,19 +148,6 @@ switch (args[0].toLowerCase()){
       break;
   case "img":
     image(msg, args);
-    break;
-  case "src":
-      ytSearch( 'superman theme', function ( err, r ) {
-        if ( err ) throw err
-       
-        const videos = r.videos
-        const playlists = r.playlists
-        const accounts = r.accounts
-       
-        const firstResult = videos[ 0 ]
-       
-        console.log( firstResult )
-      } )
     break;
   default: msg.channel.sendMessage("Nani?");
 }
