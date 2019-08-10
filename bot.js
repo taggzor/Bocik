@@ -80,10 +80,10 @@ function szukaj(nazwa,link)
     
     link = "https://www.youtube.com"+firstResult
     console.log(link);
-
+    
   
     } );
-  
+   console.log("1  "+link);
   return link;
 }
 
