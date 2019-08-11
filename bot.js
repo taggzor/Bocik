@@ -155,7 +155,10 @@ switch (args[0].toLowerCase()){
       });
       break;
   case "p":
-      
+      if(msg.member.voiceChannel){
+if(msg.guild.voiceConnection){
+msg.member.voiceChannel.join();}}
+else msg.channel.send("nie ma cie");
     break;
   case "skip":
       var server = servers[msg.guild.id];
