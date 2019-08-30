@@ -15,4 +15,4 @@ client.registry.registerCommandsIn(__dirname + '/commands');
 
 
 
-client.login(process.env.BOT_TOKEN);
+client.login(proc/ess.env.BOT_TOKEN);
