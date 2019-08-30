@@ -15,5 +15,4 @@ client.registry.registerCommandsIn(__dirname + '/commands');
 
 
 
-
 client.login(process.env.BOT_TOKEN);
