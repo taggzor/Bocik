@@ -9,7 +9,7 @@ import yts = require('youtube-search');
 
 export default class playCommand implements IBotCommand{
     
-    private readonly _command = "play";
+    private readonly _command = "p";
     
 
     help(): string {

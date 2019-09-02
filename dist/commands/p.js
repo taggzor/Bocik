@@ -46,7 +46,7 @@ var yts = require("youtube-search");
 //import yt = require("yt-search");
 var playCommand = /** @class */ (function () {
     function playCommand() {
-        this._command = "play";
+        this._command = "p";
     }
     playCommand.prototype.help = function () {
         return "Odtwórz muzyke z linkiem youtube";

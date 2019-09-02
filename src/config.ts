@@ -11,7 +11,9 @@ export let config = {
         "play",
         "zapro",
         "stop",
-        "skip"
+        "skip",
+        "p",
+        "help"
 
         
     ]
