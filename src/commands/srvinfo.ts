@@ -19,7 +19,7 @@ export default class srvinfoCommand implements IBotCommand{
             .setColor('AQUA')
             .setTitle("Informacje o serwerze")
             .setFooter("Serwer stworzony przez "+ msg.guild.owner.displayName)
-            .setThumbnail(msg.guild.splashURL)
+            .setThumbnail(msg.guild.displayAvatarURL)
             .setDescription("Nazwa serwera: "+msg.guild.name)
             .addField("Liczba użytkowników: ",`${msg.guild.memberCount}`);
             
