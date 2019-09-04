@@ -41,12 +41,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var index_1 = __importDefault(require("../index"));
 var index_2 = require("../index");
-var ytdl = require("ytdl-core");
 var yts = require("youtube-search");
-//import yt = require("yt-search");
+require("yt-player");
 var playCommand = /** @class */ (function () {
     function playCommand() {
         this._command = "play";
+        this.ytplayer = require("yt-player");
     }
     playCommand.prototype.help = function () {
         return "Odtwórz muzyke z linkiem youtube";
@@ -62,9 +62,11 @@ var playCommand = /** @class */ (function () {
                 //.setColor([255,0,0])
                 //.addField("Teraz leci:",server.queue[0]);
                 //msg.channel.send(embed);
-                server.dispatcher = conn.playStream(ytdl(server.queue[0], { filter: "audioonly" }));
+                //server.dispatcher = conn.playStream(ytdl(server.queue[0],{filter:"audioonly"}));
+                player.load(server.queue[0]);
+                player.play();
                 server.queue.shift();
-                server.dispatcher.on("end", function () {
+                player.on("ended", function () {
                     if (server.queue[0]) {
                         play(conn, msg);
                     }
@@ -72,10 +74,11 @@ var playCommand = /** @class */ (function () {
                         conn.disconnect();
                 });
             }
-            var gildia, server, opts;
+            var player, gildia, server, opts;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
+                        player = new this.ytplayer("#player");
                         if (!msg.member.voiceChannelID) {
                             index_1.default.napisz(msg, "Musisz dołączyć do czatu głowowego");
                             return [2 /*return*/];
@@ -87,8 +90,7 @@ var playCommand = /** @class */ (function () {
                         gildia = parseInt(msg.guild.id);
                         if (!index_2.servers[gildia]) {
                             index_2.servers[gildia] = {
-                                queue: [],
-                                words: []
+                                queue: []
                             };
                         }
                         server = index_2.servers[gildia];
@@ -103,7 +105,7 @@ var playCommand = /** @class */ (function () {
                                     return console.log("err z play");
                                 if (results == undefined)
                                     return;
-                                server.queue.push(results[0].link);
+                                server.queue.push(results[0].id);
                                 if (!msg.guild.voiceConnection) {
                                     msg.member.voiceChannel.join()
                                         .then(function (conn) {
@@ -115,6 +117,7 @@ var playCommand = /** @class */ (function () {
                         _a.sent();
                         return [2 /*return*/];
                     case 2:
+                        args[0].replace("https://www.youtube.com/watch?v=", "");
                         msg.delete();
                         server.queue.push(args[0]);
                         if (!msg.guild.voiceConnection) {

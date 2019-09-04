@@ -63,9 +63,11 @@ var srvinfoCommand = /** @class */ (function () {
                     .setColor('AQUA')
                     .setTitle("Informacje o serwerze")
                     .setFooter("Serwer stworzony przez " + msg.guild.owner.displayName)
-                    .setThumbnail(msg.guild.splashURL)
+                    .setThumbnail(msg.guild.iconURL)
                     .setDescription("Nazwa serwera: " + msg.guild.name)
-                    .addField("Liczba użytkowników: ", "" + msg.guild.memberCount);
+                    .addField("Liczba użytkowników: ", "" + msg.guild.memberCount)
+                    .addField("Stworzony: ", msg.guild.createdAt)
+                    .addField("Dołączyłeś: ", msg.member.joinedAt);
                 msg.channel.send(embed)
                     .catch(console.error);
                 return [2 /*return*/];
