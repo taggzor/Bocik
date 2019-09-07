@@ -20,7 +20,7 @@ export default class playCommand implements IBotCommand{
     }
 
     async rc(args: string[], msg: Discord.Message, client: Discord.Client): Promise<void> {
-        const player = new this.ytplayer("#player");
+        const player = new this.ytplayer(process.env.YT_TOKEN);
         if(!msg.member.voiceChannelID){
             tagg.napisz(msg,"Musisz dołączyć do czatu głowowego");
             return;
