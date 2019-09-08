@@ -78,7 +78,7 @@ var playCommand = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        player = new this.ytplayer("#player");
+                        player = new this.ytplayer(process.env.YT_TOKEN);
                         if (!msg.member.voiceChannelID) {
                             index_1.default.napisz(msg, "Musisz dołączyć do czatu głowowego");
                             return [2 /*return*/];
